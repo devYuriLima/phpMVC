@@ -5,7 +5,7 @@
     class teste {
         public function __construct()
         {
-            echo "Olá estrangeiro";
+            echo "Olá estranho";
         }
     }
 
