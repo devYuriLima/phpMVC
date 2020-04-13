@@ -1,31 +1,31 @@
 <?php
-    namespace Src\Classes;
+namespace Src\Classes;
 
-    use Src\Traits\TraitUrlParser;
-    class ClassRoutes{
-        use TraitUrlParser;
+use Src\Traits\TraitUrlParser;
 
-        private $rota;
+class ClassRoutes{
+    use TraitUrlParser;
+    
+    private $Rota;
 
-        public function getRota(){
-            $Url = $this->parseUrl();
-            $I = $Url[0];
+    public function getRota(){
+        $Url=$this->parseUrl();
+        $I=$Url[0];
 
-            $this->rota=array(
-                ""=>"ControllerHome",
-                "home"=>"ControllerHome",
-                "sitemap"=>"ControllerSitemap",
+        $this->Rota=array(
+            ""=>"ControllerHome",
+            "home"=>"ControllerHome",
+            "sitemap"=>"ControllerSitemap",
+        );
 
-            );
-            if(array_key_exists($I,$this->rota)){
-                if(file_exists(DIRREQ."app/controllers/{$this->rota[$I]}.php")){
-                    return $this->rota[$I];
-                }else{
-                    return "ControllerHome";
-                }
+        if(array_key_exists($I,$this->Rota)){
+            if(file_exists(DIRREQ."app/controllers/{$this->Rota[$I]}.php")){
+                return $this->Rota[$I];
             }else{
                 return "ControllerHome";
             }
+        }else{
+            return "Controller404";
         }
     }
-?>
+}
